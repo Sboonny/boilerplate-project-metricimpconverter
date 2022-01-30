@@ -1,3 +1,16 @@
+//make input in format num then string
+//like{320km}
+const numStringSplitter = (input) =>{
+ const num = input.match(/[.\d+]/g)|| [1]
+ const str = input.match(/\w+/g)[0]
+ const format = [num[0], str]
+ return format
+}
+//checking division
+const checkDivision = (fraction) =>{
+  let nums = fraction.split('/')
+  return nums.length > 2 ? false: nums 
+}
 function ConvertHandler() {
   
   this.getNum = function(input) {
