@@ -14,9 +14,18 @@ const checkDivision = (fraction) => {
 class ConvertHandler {
   constructor() {
     this.getNum = function (input) {
-      let result;
+      let numSplit = numStringSplitter(input)[0]
+      let inputNums = checkDiv(numSplit)
 
-      return result;
+      if (!inputNums) return undefined;
+
+      let firstInputNums = inputNums[0]
+      let secondInputNums = inputNums[1] || 1
+
+      if (isNaN(firstInputNums)|| isNaN(secondInputNums)) return undefined;
+
+      let inputResult = parseFloat(firstInputNums) / parseFloat(secondInputNums)
+      return inputResult
     };
 
     this.getUnit = function (input) {
