@@ -8,8 +8,8 @@ const numStringSplitter = (input) => {
 };
 //checking division
 const checkDivision = (fraction) => {
-  let nums = fraction.split("/");
-  return nums.length > 2 ? false : nums;
+  let divisedNums = fraction.split("/");
+  return divisedNums.length > 2 ? false : divisedNums;
 };
 class ConvertHandler {
   constructor() {
