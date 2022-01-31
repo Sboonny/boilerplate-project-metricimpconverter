@@ -14,24 +14,44 @@ const checkDivision = (fraction) => {
 class ConvertHandler {
   constructor() {
     this.getNum = function (input) {
-      let numSplit = numStringSplitter(input)[0]
-      let inputNums = checkDiv(numSplit)
+      let numSplit = numStringSplitter(input)[0];
+      let inputNums = checkDiv(numSplit);
 
       if (!inputNums) return undefined;
 
-      let firstInputNums = inputNums[0]
-      let secondInputNums = inputNums[1] || 1
+      let firstInputNums = inputNums[0];
+      let secondInputNums = inputNums[1] || 1;
 
-      if (isNaN(firstInputNums)|| isNaN(secondInputNums)) return undefined;
+      if (isNaN(firstInputNums) || isNaN(secondInputNums)) return undefined;
 
-      let inputResult = parseFloat(firstInputNums) / parseFloat(secondInputNums)
-      return inputResult
+      let inputResult =
+        parseFloat(firstInputNums) / parseFloat(secondInputNums);
+      return inputResult;
     };
 
     this.getUnit = function (input) {
-      let result;
-
-      return result;
+      let lowerCaseInputArr = numStringSplitter(input)[1].toLowerCase();
+      
+      if (
+        [
+          "gal",
+          "lbs",
+          "km",
+          "l",
+          "kg",
+          "mi",
+          "GAL",
+          "LBS",
+          "KM",
+          "L",
+          "KG",
+          "MI"
+        ].indexOf(lowerCaseInputArr) > -1
+      ) {
+      } else {
+        lowerCaseInputArr = "invalid unit";
+      }
+       return lowerCaseInputArr
     };
 
     this.getReturnUnit = function (initUnit) {
