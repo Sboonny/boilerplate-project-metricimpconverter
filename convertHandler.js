@@ -55,9 +55,22 @@ class ConvertHandler {
     };
 
     this.getReturnUnit = function (initUnit) {
-      let result;
-
-      return result;
+      const board = {
+        l: "gal",
+        kg: "lbs",
+        mi: "km",
+        gal: "l",
+        lbs: "kg",
+        km: "mi",
+        L: "GAL",
+        KG: "MI",
+        MI: "KM",
+        GAL: "L",
+        LBS: "KG",
+        KM: "MI"
+      };
+      let initUnitInput = board[initUnit]
+      return initUnitInput;
     };
 
     this.spellOutUnit = function (unit) {
