@@ -69,14 +69,22 @@ class ConvertHandler {
         LBS: "KG",
         KM: "MI"
       };
-      let initUnitInput = board[initUnit]
+      const initUnitInput = board[initUnit]
       return initUnitInput;
     };
 
     this.spellOutUnit = function (unit) {
-      let result;
-
-      return result;
+      let unit = unit.toLowerCase()
+      const board = {
+        l: "liters",
+        kg: "kilograms",
+        mi: "miles",
+        gal: "gallons",
+        lbs: "pounds",
+        km: "kilometers"
+      };
+      const unitInput = board[unit]
+      return unitInput;
     };
 
     this.convert = function (initNum, initUnit) {
