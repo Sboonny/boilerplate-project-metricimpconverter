@@ -69,8 +69,8 @@ class ConvertHandler {
         LBS: "KG",
         KM: "MI"
       };
-      const initUnitInput = board[initUnit]
-      return initUnitInput;
+      const inputInitUnit = board[initUnit]
+      return inputInitUnit;
     };
 
     this.spellOutUnit = function (unit) {
@@ -83,17 +83,37 @@ class ConvertHandler {
         lbs: "pounds",
         km: "kilometers"
       };
-      const unitInput = board[unit]
-      return unitInput;
+      const inputUnit = board[unit]
+      return inputUnit;
     };
 
     this.convert = function (initNum, initUnit) {
       const galToL = 3.78541;
       const lbsToKg = 0.453592;
       const miToKm = 1.60934;
-      let result;
-
-      return result;
+      let inputConvert;
+      const initNum = initNum.toLowerCase()
+      switch (initUnit) {
+        case "l":
+          inputConvert = Number((initNum / galToL).toFixed(5));
+          break;
+        case "kg":
+          inputConvert = Number((initNum / lbsToKg).toFixed(5));
+          break;
+        case "mi":
+          inputConvert = Number((initNum * miToKm).toFixed(5));
+          break;
+        case "gal":
+          inputConvert = Number((initNum * galToL).toFixed(5));
+          break;
+        case "lbs":
+          inputConvert = Number((initNum * lbsToKg).toFixed(5));
+          break;
+        case "km":
+          inputConvert = Number((initNum / miToKm).toFixed(5));
+          break;
+      }
+      return inputConvert
     };
 
     this.getString = function (initNum, initUnit, returnNum, returnUnit) {
