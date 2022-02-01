@@ -31,7 +31,7 @@ class ConvertHandler {
 
     this.getUnit = function (input) {
       let lowerCaseInputArr = numStringSplitter(input)[1].toLowerCase();
-      
+
       if (
         [
           "gal",
@@ -45,13 +45,13 @@ class ConvertHandler {
           "KM",
           "L",
           "KG",
-          "MI"
+          "MI",
         ].indexOf(lowerCaseInputArr) > -1
       ) {
       } else {
         lowerCaseInputArr = "invalid unit";
       }
-       return lowerCaseInputArr
+      return lowerCaseInputArr;
     };
 
     this.getReturnUnit = function (initUnit) {
@@ -67,23 +67,23 @@ class ConvertHandler {
         MI: "KM",
         GAL: "L",
         LBS: "KG",
-        KM: "MI"
+        KM: "MI",
       };
-      const inputInitUnit = board[initUnit]
+      const inputInitUnit = board[initUnit];
       return inputInitUnit;
     };
 
     this.spellOutUnit = function (unit) {
-      let unit = unit.toLowerCase()
+      let unit = unit.toLowerCase();
       const board = {
         l: "liters",
         kg: "kilograms",
         mi: "miles",
         gal: "gallons",
         lbs: "pounds",
-        km: "kilometers"
+        km: "kilometers",
       };
-      const inputUnit = board[unit]
+      const inputUnit = board[unit];
       return inputUnit;
     };
 
@@ -92,7 +92,7 @@ class ConvertHandler {
       const lbsToKg = 0.453592;
       const miToKm = 1.60934;
       let inputConvert;
-      const initNum = initNum.toLowerCase()
+      const initNum = initNum.toLowerCase();
       switch (initUnit) {
         case "l":
           inputConvert = Number((initNum / galToL).toFixed(5));
@@ -113,11 +113,11 @@ class ConvertHandler {
           inputConvert = Number((initNum / miToKm).toFixed(5));
           break;
       }
-      return inputConvert
+      return inputConvert;
     };
 
     this.getString = function (initNum, initUnit, returnNum, returnUnit) {
-      let format=`${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`;
+      let format = `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`;
 
       return format;
     };
