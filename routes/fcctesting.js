@@ -27,16 +27,16 @@
 
 'use strict';
 
-const cors = require('cors');
-const fs = require('fs');
-const runner = require('../test-runner');
+import cors from 'cors';
+import { readFile } from 'fs';
+import { report as _report, on } from '../test-runner';
 
-module.exports = function (app) {
+export default function (app) {
 
   app.route('/_api/server.js')
     .get(function(req, res, next) {
       console.log('requested');
-      fs.readFile(__dirname + '/server.js', function(err, data) {
+      readFile(__dirname + '/server.js', function(err, data) {
         if(err) return next(err);
         res.send(data.toString());
       });
@@ -44,7 +44,7 @@ module.exports = function (app) {
   app.route('/_api/routes/api.js')
     .get(function(req, res, next) {
       console.log('requested');
-      fs.readFile(__dirname + '/routes/api.js', function(err, data) {
+      readFile(__dirname + '/routes/api.js', function(err, data) {
         if(err) return next(err);
         res.type('txt').send(data.toString());
       });
@@ -52,7 +52,7 @@ module.exports = function (app) {
   app.route('/_api/controllers/convertHandler.js')
     .get(function(req, res, next) {
       console.log('requested');
-      fs.readFile(__dirname + '/controllers/convertHandler.js', function(err, data) {
+      readFile(__dirname + '/controllers/convertHandler.js', function(err, data) {
         if(err) return next(err);
         res.type('txt').send(data.toString());
       });
@@ -64,12 +64,12 @@ module.exports = function (app) {
     res.json({status: 'unavailable'});
   },
   function(req, res, next){
-    if(!runner.report) return next();
-    res.json(testFilter(runner.report, req.query.type, req.query.n));
+    if(!_report) return next();
+    res.json(testFilter(_report, req.query.type, req.query.n));
   },
   function(req, res){
-    runner.on('done', function(report){
-      process.nextTick(() =>  res.json(testFilter(runner.report, req.query.type, req.query.n)));
+    on('done', function(report){
+      process.nextTick(() =>  res.json(testFilter(_report, req.query.type, req.query.n)));
     });
   });
   app.get('/_api/app-info', function(req, res) {
