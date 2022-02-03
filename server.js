@@ -10,7 +10,6 @@ import apiRoutes from './routes/api.js';
 import fccTestingRoutes from './routes/fcctesting.js';
 import { run } from './test-runner';
 
-const express , static = require('express')
 let app = express();
 
 app.use('/public', static(process.cwd() + '/public'));
